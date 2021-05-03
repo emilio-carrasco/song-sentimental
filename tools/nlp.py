@@ -18,7 +18,7 @@ def stop_words (lista):
         if string not in stop_words:
             nueva_lista.append(string)
     return " ".join(nueva_lista)
-    
+
 def intoEnglish(string):
     string = TextBlob(string)
     language= string.detect_language()
@@ -48,5 +48,5 @@ def sentimental(cadena):
     #english=intoEnglish(tokens)
     sw=stop_words(tokens)
     senti=sentimentAnalysis(sw)
-    return senti 
+    return senti
 

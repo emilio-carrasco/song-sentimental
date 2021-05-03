@@ -21,7 +21,7 @@ def cleantext(cadena):
         return sin_parentesis
     except:
         return []
-    
+
 def plotsongs(data):
     df = pd.DataFrame(data)
     df=df.set_index('title')

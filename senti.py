@@ -9,14 +9,14 @@ app = Flask(__name__, template_folder='templates')
 print(" - - - Carga Flask", app)
 
 #////////////////////////////////    GET    /////////////////////////////////////////////////////
- 
+
 @app.route("/", methods=["POST", "GET"])
-    
+
 def index():
     """[summary] Returns "Index" as root
     """
     return "Index"
-                            
+
 @app.route("/songfromid/<id>")
 def getsongfromid(id):
     """[summary] Returns a complete song data from its id
@@ -28,14 +28,14 @@ def getsongfromid(id):
 def allsongs():
     """[summary] Returns all the songs in the data base
     """
-    data=db.all_songs()    
+    data=db.all_songs()
     return jsonify(data)
 
 @app.route("/allartists/")
 def allartists():
     """ Returns all the artists in de data base
     """
-    data=db.all_artists()    
+    data=db.all_artists()
     return jsonify(data)
 
 @app.route("/songsfromartistid/<id>")
@@ -135,18 +135,18 @@ def create():
 
     Returns:
         str: created or error
-    """ 
+    """
     print("- - - Entra en create")
     return db.crea()
 
 @app.route("/load", methods=["POST"])
 def load():
-    """This function loads in the database all the info from ./data/songs.csv (containg title lyric and artist columns)     
+    """This function loads in the database all the info from ./data/songs.csv (containg title lyric and artist columns)
 
     Returns:
         str: loaded or error
     """
-    print("- - - Entra en load")  
+    print("- - - Entra en load")
     return db.load()
 
 @app.route("/delete", methods=["POST"])
@@ -204,7 +204,7 @@ def deletesongbyid(id):
         return db.delete_song_by_id(id)
     except:
         return "error"
-   
+
 @app.route("/deleteartisandsongbyidartist/<id>", methods=["POST"])
 def deleteartisandsongbyidartist(id):
     """Delete an artist and all songs releated .
@@ -219,7 +219,7 @@ def deleteartisandsongbyidartist(id):
         return db.delete_artist_and_song_by_idartist(id)
     except:
         return "error"
-    
+
 @app.route("/conectsongartist/", methods=["POST"])
 def conectsongartist():
     """Connect a song to another artist. Delets previos connection
