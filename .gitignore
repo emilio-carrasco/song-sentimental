@@ -2,5 +2,5 @@
 **/*.ipynb_checkpoints/
 **/__pycache__
 .vscode
-*.csv
+./data/songs.csv
 .env
