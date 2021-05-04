@@ -1,6 +1,7 @@
 from sqlalchemy.sql.elements import Null
 import config.config
 from flask import Flask, request , jsonify, render_template
+import markdown.extensions.fenced_code
 import tools.database as db
 from tools.tools import plotsongs, plotartist
 import os
@@ -13,9 +14,11 @@ print(" - - - Carga Flask", app)
 @app.route("/", methods=["POST", "GET"])
 
 def index():
-    """[summary] Returns "Index" as root
-    """
-    return "Index"
+    readme_file = open("Readme.md", "r")
+    md_template = markdown.markdown( 
+        readme_file.read(), extensions=["fenced_code"]
+    )
+    return md_template
 
 @app.route("/songfromid/<id>")
 def getsongfromid(id):
